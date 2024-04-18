@@ -10,7 +10,8 @@ async fn main() {
         initial_delay: 1
     };
 
-    if let Err(error) = my_server.run().await {
-        eprint!("Server error: {}", error)
-    };
+    match my_server.run().await {
+        Ok(()) => println!("Server terminated successfully!"),
+        Err(error) => eprintln!("Server error: {}", error)
+    }
 }
